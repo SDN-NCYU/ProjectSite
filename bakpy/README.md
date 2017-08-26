@@ -1,0 +1,2 @@
+- Django + MySQL
+- note: https://hackmd.io/GwFgJmCmYgHAtAIwEwE4AM9wHZOrMggIwCsRq2iqAxuqkekA

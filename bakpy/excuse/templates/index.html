@@ -8,11 +8,11 @@
     <title>Simple Responsive Admin</title> 
         <!-- BOOTSTRAP STYLES-->
     {% load static %} 
-    <link href="{% static "assets/css/bootstrap.css" %}" rel="stylesheet" />
+    <link href="{% static "/assets/css/bootstrap.css" %}" rel="stylesheet" type="text/css"/>
         <!-- FONTAWESOME STYLES-->
-    <link href= "{% static "/assets/css/font-awesome.css" %}" rel="stylesheet" /> 
+    <link href= "{% static "/assets/css/font-awesome.css" %}" rel="stylesheet" type="text/css"/> 
         <!-- CUSTOM STYLES-->
-    <link href="{% static "/assets/css/custom.css" %}" rel="stylesheet" /> 
+    <link href="{% static "/assets/css/custom.css" %}" rel="stylesheet" type="text/css"/> 
         <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -76,20 +76,55 @@
             <div class="row">
                 <iframe src="https://www.facebook.com/plugins/comment_embed.php?href=https%3A%2F%2Fwww.facebook.com%2Fyifeno%2Fposts%2F1567176046667308%3Fcomment_id%3D1567248656660047&include_parent=true" width="560" height="560" style="overflow:hidden" scrolling="yes" frameborder="0" allowTransparency="true"></iframe>
             </div>
+			<div class="row">
+				<form action="" method="GET">
+					<label for="user_name">User name</label>
+					<input id="user_name" type="text" name="user_name">
+					<input type="hidden" name="ok" value="yes">
+					<input type="submit" value="提交Username">
+				</form>
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+					{{ message }}
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}	
+            </div>
+
+			<div class="row">
+				<form action="/whitelist.html/" method="POST">
+					<label for="wip">WhiteList's IP</label>
+					<input id="wip" type="text" name="wip">
+					<input type="hidden" name="ok" value="yes">
+					<input type="submit" value="提交IP">
+				</form>
+				{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+            </div>
 
             <div class="row">
-						<table>
-							<tr>
-								<th>編號 </th>
-								<th>Entropy</th>
-							</tr>
-						{% for j in entrop %}
-							<tr>
-								<td> {{ j.no }} </td>
-								<td> {{ j.entropy }} </td>
-							</tr>
-						{% endfor %}
-						</table>
+                
+                <table>
+                    <tr>
+                        <th>時間 </th>
+                        <th>Entropy</th>
+                    </tr>
+                {% for j in entrop %}
+                    <tr>
+                        <td> {{ j.time }} </td>
+                        <td> {{ j.entropy }} </td>
+                    </tr>
+                {% endfor %}
+                </table>
             </div>
         </div>
     </div>

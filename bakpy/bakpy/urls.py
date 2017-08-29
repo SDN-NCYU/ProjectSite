@@ -21,5 +21,8 @@ from excuse import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.entropy),
-    url(r'^index.html/', views.entropy)
+    url(r'^index.html/', views.entropy),
+    url(r'^ui.html/', views.ui),
+    url(r'^blank.html/', views.blank),
+    url(r'^whitelist.html/$', views.whitelist),
 ]

@@ -10,13 +10,31 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class Sdn(models.Model):
-    entropy = models.FloatField(db_column='Entropy')  # Field name made lowercase.
+class Blacklist(models.Model):
     no = models.IntegerField(primary_key=True)
+    address = models.CharField(max_length=64)
+
+    class Meta:
+        managed = False
+        db_table = 'BlackList'
+
+
+class Sdn(models.Model):
+    time = models.CharField(primary_key=True, max_length=32)
+    entropy = models.FloatField(db_column='Entropy')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'SDN'
+
+
+class Whitelist(models.Model):
+    no = models.IntegerField(primary_key=True)
+    address = models.CharField(max_length=64)
+
+    class Meta:
+        managed = False
+        db_table = 'WhiteList'
 
 
 class AuthGroup(models.Model):

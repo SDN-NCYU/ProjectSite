@@ -57,7 +57,7 @@
                     </li>
                     
                     <li>
-						<a href="whitelist.html">
+						<a href="blank.html">
 					<i class="fa fa-file-text-o " aria-hidden="true"></i>
 						White List
 						</a>
@@ -71,38 +71,42 @@
 					</li>
 		</nav>
 		<!-- NAV LEFT MENU-->
-    <div id="page-wrapper">
-        <div id="page-inner">
-		{% if messages %}
-		  <ul class="messages">
-			{% for message in messages %}
-			  <li class="{{ message.tags }}">{{ message }}</li>
-			{% endfor %}
-		  </ul>
-		{% endif %}	
-            <div class="row">
-                <iframe src="https://www.facebook.com/plugins/comment_embed.php?href=https%3A%2F%2Fwww.facebook.com%2Fyifeno%2Fposts%2F1567176046667308%3Fcomment_id%3D1567248656660047&include_parent=true" width="560" height="560" style="overflow:hidden" scrolling="yes" frameborder="0" allowTransparency="true"></iframe>
-            </div>
+    	<div id="page-wrapper">
 			<div class="row">
-				<form action="" method="GET">
-					<label for="user_name">User name</label>
-					<input id="user_name" type="text" name="user_name">
-					<input type="hidden" name="ok" value="yes">
-					<input type="submit" value="提交Username">
-				</form>
+				<br />
+				{% if messages %}
+				  <ul class="messages">
+					{% for message in messages %}
+					  <li class="{{ message.tags }}">{{ message }}</li>
+					{% endfor %}
+				  </ul>
+				{% endif %} 	
+
+				{% for e in errors %}
+					{{ e }} <br />
+				{% endfor %}
 			</div>
 
-            <div class="row">
-                
+			<div class="row">
+				<form action="" method="POST">
+					<label for="wip">WhiteList's IP</label>
+					<input id="wip" type="text" name="wip">
+					<input type="hidden" name="ok" value="yes">
+					<input type="submit" value="提交IP">
+				</form>
+				
+            </div>
+
+            <div class="row"> 
                 <table>
                     <tr>
-                        <th>時間 </th>
-                        <th>Entropy</th>
+                        <th>編號 </th>
+                        <th>IP</th>
                     </tr>
-                {% for j in entrop %}
+                {% for j in whitelist %}
                     <tr>
-                        <td> {{ j.time }} </td>
-                        <td> {{ j.entropy }} </td>
+                        <td> {{ j.no }} </td>
+                        <td> {{ j.address }} </td>
                     </tr>
                 {% endfor %}
                 </table>

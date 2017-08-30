@@ -41,6 +41,7 @@
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
+
                 <ul class="nav" id="main-menu">
                  
 
@@ -83,7 +84,14 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>BLANK PAGE </h2>   
+                     <h2>BLANK PAGE </h2>
+					{% if messages %}
+					  <ul class="messages">
+						{% for message in messages %}
+						  <li class="{{ message.tags }}">{{ message }}</li>
+						{% endfor %}
+					  </ul>
+					{% endif %}   
                     </div>
                 </div>              
                  <!-- /. ROW  -->

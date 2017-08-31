@@ -19,6 +19,25 @@ class Blacklist(models.Model):
         db_table = 'BlackList'
 
 
+class Dangersrc(models.Model):
+    no = models.IntegerField()
+    time = models.CharField(max_length=64)
+    address = models.CharField(max_length=64)
+
+    class Meta:
+        managed = False
+        db_table = 'DangerSrc'
+
+
+class Packetin(models.Model):
+    time = models.CharField(primary_key=True, max_length=64)
+    packetin = models.IntegerField(db_column='PacketIn')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'PacketIn'
+
+
 class Sdn(models.Model):
     time = models.CharField(primary_key=True, max_length=32)
     entropy = models.FloatField(db_column='Entropy')  # Field name made lowercase.

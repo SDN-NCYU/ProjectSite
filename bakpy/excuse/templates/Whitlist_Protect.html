@@ -95,25 +95,27 @@
 
         <!-- NAV INNER START -->
 		<script>
+            var entro;
 			function updateDiv()
 			{ 
 				$( "#autoloadblock" ).load(window.location.href + " #autoloadblock" );
 			}
             function pie()
             {
-                var var1 = document.getElementById("demo").value;
-                $('.chart').data('easyPieChart').update(parseFloat(var1)*100/5.0);
+                //var1 = getElementById("demo")
+                $('.chart').data('easyPieChart').update(Math.random());
             }
-		</script>
 
+		</script>	
         <div class="right_col" role="main">
 			<script> setInterval(updateDiv,1000); </script>
-            <script> setInterval(pie,5000); </script>
+            <script> setInterval(pie,1000); </script>
             <div id="autoloadblock" class="row tile_count">
            		<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                     <span class="count_top"><i class="fa fa-clock-o"></i>Time:</span>
                     <div class="count">{{now}}</div>
                 </div>
+                <p id="demo">123</p>
                 <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                     <span class="count_top"><i class="fa fa-bullseye" aria-hidden="true"></i>Per 5Sec Entropy</span>
                     <div class="count">{{myentrop}}</div>
@@ -122,11 +124,7 @@
                     <span class="count_top"><i class="fa fa-upload" aria-hidden="true" ></i> Per Sec PacketIn</span>
                     <div class="count">{{mypacketin}}</div>
                 </div>
-                 <div style="display:none">
-                    <input id="demo" value="{{myentrop}}">
-                </div>
             </div>
-
             <!--Time,entropy,packetin-->
             <div class="row">
                 <div class="col-md-3">
@@ -160,55 +158,46 @@
                         <div class="x_title">
                             <h3>Insert Address into White/Black List</h3>
                             <div class="clearfix"></div>
-                        {% if messages %}
-                          <ul class="messages">
-                            {% for message in messages %}
-                              <li class="{{ message.tags }}">{{ message }}</li>
-                            {% endfor %}
-                          </ul>
-                        {% endif %}  
                         </div>
-                        <div class="x_content">
-                            <form class="form-horizontal form-label-left" method="POST" action="">
-                                <div class="form-group">
-                                    <label for="" class="fa fa-file-text-o" aria-hidden="true">IP Address - White List</label>
-                                    <div class="input-group multi-control-group col-md-11">
-                                        <form action="" method="POST">
-                                            <input id= "w_first" name= "w_first" type="number" class="form-control">
+                            <div class="x_content">
+                            <form class="form-horizontal form-label-left">
+                              <div class="form-group">
+                                <label for="" class="fa fa-file-text-o" aria-hidden="true">
+                                IP Address - White List</label>
+                                    <div class="input-group multi-control-group col-md-13">
+                                        <form action="/whitelist" method="POST">
+                                            <input id= "a" type="text" class="form-control">
                                             <span class="input-group-addon">.</span>
-                                            <input id="w_second" name="w_second" type="number" class="form-control">
+                                            <input id="b" type="text" class="form-control">
                                             <span class="input-group-addon">.</span>
-                                            <input id="w_third" name="w_third" type="number" class="form-control">
+                                            <input id="c" type="text" class="form-control">
                                             <span class="input-group-addon">.</span>
-                                            <input id="w_fourth" name="w_fourth" type="number" class="form-control">
-                                            <input type="hidden" name="w_ok" value="yes">
+                                            <input id="d" type="text" class="form-control">
+                                            <input type="hidden" name="ok" value="yes">
                                             <span class="input-group-btn">
                                              <input type="submit" value="提交" class="btn btn-primary">
                                             </span>
                                         </form>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="" class="fa fa-file-text-o" aria-hidden="true">IP Address - White List</label>
-                                    <div class="input-group multi-control-group col-md-11">
-                                        <form action="" method="POST">
-                                            <input id= "b_first" name= "b_first" type="number" class="form-control">
-                                            <span class="input-group-addon">.</span>
-                                            <input id="b_second" name="b_second" type="number" class="form-control">
-                                            <span class="input-group-addon">.</span>
-                                            <input id="b_third" name="b_third" type="number" class="form-control">
-                                            <span class="input-group-addon">.</span>
-                                            <input id="b_fourth" name="b_fourth" type="number" class="form-control">
-                                            <input type="hidden" name="b_ok" value="yes">
-                                            <span class="input-group-btn">
-                                             <input type="submit" value="提交" class="btn btn-primary">
-                                            </span>
-                                        </form>
+                              </div>
+                            <!--
+                            <div class="form-group">
+                                <b><label for="" class="fa fa-file-text" aria-hidden="true">
+                                IP Address - Black List</label></b>
+                                    <div class="input-group multi-control-group col-md-13">
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-addon">.</span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-addon">.</span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-addon">.</span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-btn">
+                                          <button type="button" class="btn btn-primary">Sent</button>
+                                        </span>
                                     </div>
-                                </div>
-
-                            </form>
+                            </div>
+                            !-->
                         </div>
                     </div>
                 </div>
@@ -278,17 +267,6 @@
     <script src="{% static "../static/assets/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js" %}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{% static "../static/assets/build/js/custom.min.js" %}"></script>
-        <script>
-        $('.chart').easyPieChart({
-                barColor: function (percent) {
-                   return (percent < 60 ? '#5cb85c' : percent < 80 ? '#f0ad4e' : '#cb3935');
-                },
-                trackWidth: 7,
-                lineWidth: 7,
-                onStep: function (from, to, percent) {
-                   $(this.el).find('.percent').text(Math.round(percent));
-                }
-            });
-        </script>
+	
   </body>
 </html>

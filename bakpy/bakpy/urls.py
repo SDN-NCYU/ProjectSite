@@ -22,11 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.Protect),
     url(r'^index.html/', views.entropy),
-    url(r'^ui.html/', views.ui),
-    url(r'^blank.html/', views.blank),
-    url(r'^whitelist$', views.whitelist),
-    url(r'^whitelist.html/$', views.whitelist),
-    url(r'^Protect.html/', views.Protect),
+    url(r'^/Protect.html/', views.Protect),
     url(r'^mymodel.html/',views.mymodel),
     url(r'^NewProject.html/',views.NewProject),
 ]

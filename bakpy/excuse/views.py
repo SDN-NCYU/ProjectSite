@@ -40,6 +40,12 @@ def NewProject(request):
 def mymodel(request):
     return render(request,"mymodel.html")
 
+def WhiteList(request):
+    return render(request,"WhiteList.html")
+
+def BlackList(request):
+    return render(request,"BlackList.html")
+
 def Protect(request):
     entrop = Sdn.objects.all().order_by('time')
     no_entrop = Sdn.objects.count()

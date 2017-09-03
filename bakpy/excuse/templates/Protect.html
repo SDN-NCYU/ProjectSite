@@ -10,23 +10,23 @@
     <title>Ryu_DDoS</title>
     {% load static %}
     <!-- Bootstrap -->
-    <link href="{% static "../static/assets/vendors/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "../static/vendors/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{% static "../static/assets/vendors/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "../static/vendors/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{% static "../static/assets/vendors/nprogress/nprogress.css" %}" rel="stylesheet">
+    <link href="{% static "../static/vendors/nprogress/nprogress.css" %}" rel="stylesheet">
     <!-- iCheck -->
-    <link href="{% static "../static/assets/vendors/iCheck/skins/flat/green.css" %}" rel="stylesheet">
+    <link href="{% static "../static/vendors/iCheck/skins/flat/green.css" %}" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="{% static "../static/assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" %}" rel="stylesheet">
+    <link href="{% static "../static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" %}" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="{% static "../static/assets/vendors/jqvmap/dist/jqvmap.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "../static/vendors/jqvmap/dist/jqvmap.min.css" %}" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="{% static "../static/assets/vendors/bootstrap-daterangepicker/daterangepicker.css" %}" rel="stylesheet">
+    <link href="{% static "../static/vendors/bootstrap-daterangepicker/daterangepicker.css" %}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{% static "../static/assets/build/css/custom.min.css" %}" rel="stylesheet">
+    <link href="{% static "../static/build/css/custom.min.css" %}" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -35,7 +35,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Ryu_DDoS</span></a>
+              <a href="http://120.113.173.84:8000/" class="site_title"><i class="fa fa-paw"></i> <span>Ryu_DDoS</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -43,7 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                  <img src="{% static "../static/assets/images/img.jpg" %}" alt="..." class="img-circle profile_img">
+                  <img src="{% static "../static/images/img.jpg" %}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -59,16 +59,12 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#">Dashboard2</a></li>
-                      <li><a href="#">Dashboard3</a></li>
-                    </ul>
+                  <li><a href="http://120.113.173.84:8000/"><i class="fa fa-home"></i> Home </a>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Data List <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">WhiteList</a></li>
-                      <li><a href="#">BlackList</a></li>
+                      <li><a href="WhiteList.html" target="_blank">WhiteList</a></li>
+                      <li><a href="BlackList.html" target="_blank">BlackList</a></li>
                       <li><a href="#">Attacked Log</a></li>
                     </ul>
                   </li>
@@ -104,23 +100,37 @@
                 var var1 = document.getElementById("demo").value;
                 $('.chart').data('easyPieChart').update(parseFloat(var1)*100/5.0);
             }
+
 		</script>
 
         <div class="right_col" role="main">
 			<script> setInterval(updateDiv,1000); </script>
             <script> setInterval(pie,5000); </script>
             <div id="autoloadblock" class="row tile_count">
-           		<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-clock-o"></i>Time:</span>
+           		<div class="col-md-3 col-sm-6 col-xs-10 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-clock-o"></i>Time</span>
                     <div class="count">{{now}}</div>
+                     <span class="count_bottom">GMT+8</span>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-bullseye" aria-hidden="true"></i>Per 5Sec Entropy</span>
-                    <div class="count">{{myentrop}}</div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-bullseye" aria-hidden="true"></i>Entropy</span>
+                    <div class="count green" id="en">{{myentrop}}</div>
+                    <span class="count_bottom">Per 5 Second</span>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-upload" aria-hidden="true" ></i> Per Sec PacketIn</span>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-upload" aria-hidden="true" ></i>PacketIn</span>
                     <div class="count">{{mypacketin}}</div>
+                    <span class="count_bottom">Per 1 Second</span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-file-text-o"></i>WhiteList</span>
+                    <div class="count">0023</div>
+                     <span class="count_bottom">Addresses</span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-file-text"></i>BlackList</span>
+                    <div class="count">0007</div>
+                     <span class="count_bottom">Addresses</span>
                 </div>
                  <div style="display:none">
                     <input id="demo" value="{{myentrop}}">
@@ -130,8 +140,8 @@
             <!--Time,entropy,packetin-->
             <div class="row">
                 <div class="col-md-3">
-                    <div class="x_panel"> 
-                         <div class="x_title"> 
+                    <div class="x_panel" ><b>
+                         <div class="x_title"  style="text-align:center;" > 
                             <h3>Now Entropy</h3>
                         </div>
                         <div class="row">
@@ -142,18 +152,19 @@
                             </div>
                         </div>
                         <div>
-                            <span class="count_bottom">
-                                <i class="green"> 0 - 80%</i>
-                                is Safe
+                            <span class="count_bottom" style="text-align:left;">
+                                <i class="green"> 0 - 60%Safe</i>
+                            </span>
+                            <span class="count_bottom" >
+                                <i class="text-danger">&nbsp;60 - 80%OK</i>
                             </span>
                         </div>
-                        <div>
+                        <div  style="text-align:center;">
                             <span class="count_bottom">
-                                <i class="red"> 80 - 100~%</i>
-                                is Danger
+                                <i class="red">80 - 100~%Danger</i>
                             </span>
                         </div>
-                    </div>
+                    </b></div>
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-8">
                     <div class="x_panel">
@@ -172,7 +183,7 @@
                             <form class="form-horizontal form-label-left" method="POST" action="">
                                 <div class="form-group">
                                     <label for="" class="fa fa-file-text-o" aria-hidden="true">IP Address - White List</label>
-                                    <div class="input-group multi-control-group col-md-11">
+                                    <div class="input-group multi-control-group col-md-13">
                                         <form action="" method="POST">
                                             <input id= "w_first" name= "w_first" type="number" class="form-control">
                                             <span class="input-group-addon">.</span>
@@ -188,10 +199,12 @@
                                         </form>
                                     </div>
                                 </div>
+                            </form>
 
+                            <form class="form-horizontal form-label-left" method="POST" action="">
                                 <div class="form-group">
-                                    <label for="" class="fa fa-file-text-o" aria-hidden="true">IP Address - White List</label>
-                                    <div class="input-group multi-control-group col-md-11">
+                                    <label for="" class="fa fa-file-text" aria-hidden="true">IP Address - Black List</label>
+                                    <div class="input-group multi-control-group col-md-13">
                                         <form action="" method="POST">
                                             <input id= "b_first" name= "b_first" type="number" class="form-control">
                                             <span class="input-group-addon">.</span>
@@ -207,8 +220,8 @@
                                         </form>
                                     </div>
                                 </div>
-
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -238,46 +251,46 @@
     </div>
 
     <!-- jQuery -->
-    <script src="{% static "../static/assets/vendors/jquery/dist/jquery.min.js" %}"></script>
+    <script src="{% static "../static/vendors/jquery/dist/jquery.min.js" %}"></script>
     <!-- Bootstrap -->
-    <script src="{% static "../static/assets/vendors/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "../static/vendors/bootstrap/dist/js/bootstrap.min.js" %}"></script>
     <!-- FastClick -->
-    <script src="{% static "../static/assets/vendors/fastclick/lib/fastclick.js" %}"></script>
+    <script src="{% static "../static/vendors/fastclick/lib/fastclick.js" %}"></script>
     <!-- NProgress -->
-    <script src="{% static "../static/assets/vendors/nprogress/nprogress.js" %}"></script>
+    <script src="{% static "../static/vendors/nprogress/nprogress.js" %}"></script>
     <!-- Chart.js -->
-    <script src="{% static "../static/assets/vendors/Chart.js/dist/Chart.min.js" %}"></script>
+    <script src="{% static "../static/vendors/Chart.js/dist/Chart.min.js" %}"></script>
     <!-- gauge.js -->
-    <script src="{% static "../static/assets/vendors/gauge.js/dist/gauge.min.js" %}"></script>
+    <script src="{% static "../static/vendors/gauge.js/dist/gauge.min.js" %}"></script>
     <!-- bootstrap-progressbar -->
-    <script src="{% static "../static/assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}"></script>
+    <script src="{% static "../static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}"></script>
     <!-- iCheck -->
-    <script src="{% static "../static/assets/vendors/iCheck/icheck.min.js" %}"></script>
+    <script src="{% static "../static/vendors/iCheck/icheck.min.js" %}"></script>
     <!-- Skycons -->
-    <script src="{% static "../static/assets/vendors/skycons/skycons.js" %}"></script>
+    <script src="{% static "../static/vendors/skycons/skycons.js" %}"></script>
     <!-- Flot -->
-    <script src="{% static "../static/assets/vendors/Flot/jquery.flot.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/Flot/jquery.flot.pie.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/Flot/jquery.flot.time.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/Flot/jquery.flot.stack.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/Flot/jquery.flot.resize.js" %}"></script>
+    <script src="{% static "../static/vendors/Flot/jquery.flot.js" %}"></script>
+    <script src="{% static "../static/vendors/Flot/jquery.flot.pie.js" %}"></script>
+    <script src="{% static "../static/vendors/Flot/jquery.flot.time.js" %}"></script>
+    <script src="{% static "../static/vendors/Flot/jquery.flot.stack.js" %}"></script>
+    <script src="{% static "../static/vendors/Flot/jquery.flot.resize.js" %}"></script>
     <!-- Flot plugins -->
-    <script src="{% static "../static/assets/vendors/flot.orderbars/js/jquery.flot.orderBars.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/flot-spline/js/jquery.flot.spline.min.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/flot.curvedlines/curvedLines.js" %}"></script>
+    <script src="{% static "../static/vendors/flot.orderbars/js/jquery.flot.orderBars.js" %}"></script>
+    <script src="{% static "../static/vendors/flot-spline/js/jquery.flot.spline.min.js" %}"></script>
+    <script src="{% static "../static/vendors/flot.curvedlines/curvedLines.js" %}"></script>
     <!-- DateJS -->
-    <script src="{% static "../static/assets/vendors/DateJS/build/date.js" %}"></script>
+    <script src="{% static "../static/vendors/DateJS/build/date.js" %}"></script>
     <!-- JQVMap -->
-    <script src="{% static "../static/assets/vendors/jqvmap/dist/jquery.vmap.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/jqvmap/dist/maps/jquery.vmap.world.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js" %}"></script>
+    <script src="{% static "../static/vendors/jqvmap/dist/jquery.vmap.js" %}"></script>
+    <script src="{% static "../static/vendors/jqvmap/dist/maps/jquery.vmap.world.js" %}"></script>
+    <script src="{% static "../static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js" %}"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="{% static "../static/assets/vendors/moment/min/moment.min.js" %}"></script>
-    <script src="{% static "../static/assets/vendors/bootstrap-daterangepicker/daterangepicker.js" %}"></script>
+    <script src="{% static "../static/vendors/moment/min/moment.min.js" %}"></script>
+    <script src="{% static "../static/vendors/bootstrap-daterangepicker/daterangepicker.js" %}"></script>
     <!-- easy-pie-chart -->
-    <script src="{% static "../static/assets/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js" %}"></script>
+    <script src="{% static "../static/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js" %}"></script>
     <!-- Custom Theme Scripts -->
-    <script src="{% static "../static/assets/build/js/custom.min.js" %}"></script>
+    <script src="{% static "../static/build/js/custom.min.js" %}"></script>
         <script>
         $('.chart').easyPieChart({
                 barColor: function (percent) {

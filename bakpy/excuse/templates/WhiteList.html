@@ -116,9 +116,9 @@
 
                       <tbody>
                         <tr>
-                          <td>1</td>
-                          <td>192.168.1.1</td>
-                          <td>Local</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                         </tr>
 
                       </tbody>
@@ -189,10 +189,11 @@
         (
             function() 
                 {
-                    for (var i = 0 ; i < 10 ; i++)
+                    var myaddr = ({{ myaddr|safe }})
+                    for (var i = 0 ; i < {{count}} ; i++)
                     {
                         var t = $('#whitetable').DataTable();
-                        t.row.add( ["5","8.8.8.8","test",] ).draw( false );
+                        t.row.add( [i,myaddr[i],"test",] ).draw( false );
                     }
                     
                 } 

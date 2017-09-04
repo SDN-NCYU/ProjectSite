@@ -43,7 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                  <img src="{% static "../static/images/img.jpg" %}" alt="..." class="img-circle profile_img">
+                  <!--  <img src="{% static "../static/images/img.jpg" %}" alt="..." class="img-circle profile_img"> -->
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -65,7 +65,7 @@
                     <ul class="nav child_menu">
                       <li><a href="WhiteList.html" target="_blank">WhiteList</a></li>
                       <li><a href="BlackList.html" target="_blank">BlackList</a></li>
-                      <li><a href="#">Attacked Log</a></li>
+                      <li><a href="AttackList.html" target=_blank">Attacked Log</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -177,7 +177,10 @@
                               <li class="{{ message.tags }}">{{ message }}</li>
                             {% endfor %}
                           </ul>
-                        {% endif %}  
+                        {% endif %}
+                        {% for error in errors %}
+                            {{ error }}</br>
+                        {% endfor %}
                         </div>
                         <div class="x_content">
                             <form class="form-horizontal form-label-left" method="POST" action="">
@@ -185,16 +188,16 @@
                                     <label for="" class="fa fa-file-text-o" aria-hidden="true">IP Address - White List</label>
                                     <div class="input-group multi-control-group col-md-13">
                                         <form action="" method="POST">
-                                            <input id= "w_first" name= "w_first" type="number" class="form-control">
+                                            <input id= "w_first" name= "w_first" type="number"class="form-control">
                                             <span class="input-group-addon">.</span>
-                                            <input id="w_second" name="w_second" type="number" class="form-control">
+                                            <input id="w_second" name="w_second" type="number"class="form-control">
                                             <span class="input-group-addon">.</span>
-                                            <input id="w_third" name="w_third" type="number" class="form-control">
+                                            <input id="w_third" name="w_third" type="number"class="form-control">
                                             <span class="input-group-addon">.</span>
-                                            <input id="w_fourth" name="w_fourth" type="number" class="form-control">
+                                            <input id="w_fourth" name="w_fourth" type="number"class="form-control">
                                             <input type="hidden" name="w_ok" value="yes">
                                             <span class="input-group-btn">
-                                             <input type="submit" value="提交" class="btn btn-primary">
+                                             <input type="submit" value="提交"class="btn btn-primary">
                                             </span>
                                         </form>
                                     </div>
@@ -244,6 +247,10 @@
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
+        ##### DEBUG-MODE #####
+            <pre>
+                {% filter force_escape %}{% debug %}{% endfilter %} 
+            </pre>
         -->
         </footer>
         <!-- /footer content -->

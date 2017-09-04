@@ -23,8 +23,9 @@ urlpatterns = [
     url(r'^$', views.Protect),
     url(r'^index.html/', views.entropy),
     url(r'^/Protect.html/', views.Protect),
-    url(r'^mymodel.html/',views.mymodel),
-    url(r'^NewProject.html/',views.NewProject),
-    url(r'^WhiteList.html/',views.WhiteList),
-    url(r'^BlackList.html/',views.BlackList),
+    url(r'^mymodel.html/', views.mymodel),
+    url(r'^NewProject.html/', views.NewProject),
+    url(r'^WhiteList.html/', views.WhiteList),
+    url(r'^BlackList.html/', views.BlackList),
+    url(r'^AttackList.html/', views.AttackList), 
 ]

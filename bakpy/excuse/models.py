@@ -20,7 +20,7 @@ class Blacklist(models.Model):
 
 
 class Dangersrc(models.Model):
-    no = models.IntegerField()
+    no = models.IntegerField(primary_key=True)
     time = models.CharField(max_length=64)
     address = models.CharField(max_length=64)
 

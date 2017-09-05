@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render,render_to_response
 from django.http import HttpResponse
-from excuse.models import Sdn, Blacklist, Whitelist, Dangersrc, Packetin
+from excuse.models import Blacklist, Whitelist, Dangersrc, Packetin, Sdn
 from django.contrib import messages
 from datetime import datetime
 import pytz

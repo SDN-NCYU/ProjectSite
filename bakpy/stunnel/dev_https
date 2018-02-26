@@ -1,0 +1,11 @@
+pid=
+
+cert = stunnel/stunnel.pem
+sslVersion = all
+foreground = yes
+output = stunnel/stunnel.log
+
+[https]
+accept=120.113.173.84:8443
+connect=120.113.173.84:8001
+TIMEOUTclose=1

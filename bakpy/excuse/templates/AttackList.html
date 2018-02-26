@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>WhiteList Table</title>
+    <title>AttackList Table</title>
     {% load static %}
     <!-- Bootstrap -->
     <link href="{% static "../static/vendors/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
@@ -33,7 +33,11 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="http://120.113.173.84:8000/" class="site_title"><i class="fa fa-paw"></i> <span>Ryu_DDoS</span></a>
+              <a href="https://cs084.csie.ncyu.edu.tw:8000/" class="site_title"><i class="fa fa-shield" aria-hidden="true"></i>
+                <span>
+                    Ryu_DDoS
+                </span>
+              </a>
             </div>
 
             <div class="clearfix"></div>
@@ -41,11 +45,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="" alt="..." class="img-circle profile_img">
+                  <img src="{% static "../static/build/images/kshihh.jpg" %}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>Kshih & Sean</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -57,11 +61,11 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="http://120.113.173.84:8000/"><i class="fa fa-home"></i> Home </a>
+                  <li><a href="https://cs084.ncyu.edu.tw:8000/"><i class="fa fa-home"></i> Home </a>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Data List <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/WhiteList.html">WhiteList</a></li>
+                      <li><a href="/WhiteList.html" target="_blank">WhiteList</a></li>
                       <li><a href="/BlackList.html" target="_blank">BlackList</a></li>
                       <li><a href="/AttackList.html">Attacked Log</a></li>
                     </ul>

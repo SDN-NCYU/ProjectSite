@@ -23,6 +23,7 @@
     <link href="{% static "../static/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" %}" rel="stylesheet">
     <link href="{% static "../static/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" %}" rel="stylesheet">
     <link href="{% static "../static/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <!-- Custom Theme Style -->
     <link href="{% static "../static/build/css/custom.min.css" %}" rel="stylesheet">
   </head>
@@ -33,7 +34,11 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="http://120.113.173.84:8000/" class="site_title"><i class="fa fa-paw"></i> <span>Ryu_DDoS</span></a>
+              <a href="https://cs084.ncyu.edu.tw:8000/" class="site_title"><i class="fa fa-shield" aria-hidden="true"></i>
+                <span>
+                    Ryu_DDoS
+                </span>
+              </a>
             </div>
 
             <div class="clearfix"></div>
@@ -41,11 +46,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                  <img src="{% static "../static/build/images/kshihh.jpg" %}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>Kshih & Sean</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -57,13 +62,13 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="http://120.113.173.84:8000/"><i class="fa fa-home"></i> Home </a>
+                  <li><a href="https://cs084.csie.ncyu.edu.tw:8000/"><i class="fa fa-home"></i> Home </a>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Data List <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/WhiteList.html">WhiteList</a></li>
                       <li><a href="/BlackList.html" target="_blank">BlackList</a></li>
-                      <li><a href="/AttackList.html">Attacked Log</a></li>
+                      <li><a href="/AttackList.html" target="_blank">Attacked Log</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -100,11 +105,19 @@
             </div>
           </div>
           <div class="clearfix"></div> 
-
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
+
+                    <div style="text-align:right;">
+                    <form action="" method="POST">
+                        <button id="dip" name="dip" type="submit" class="btn btn-info" onclick="checkpwd()">
+                          <i class="fa fa-trash-o"></i> Delete
+                        </button>
+                    </form>
+                    </div>
+
                     <table id="whitetable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -193,13 +206,46 @@
                     for (var i = 0 ; i < {{count}} ; i++)
                     {
                         var t = $('#whitetable').DataTable();
-                        t.row.add( [i,myaddr[i],"test",] ).draw( false );
+                        t.row.add( [i,myaddr[i]," ",] ).draw( false );
                     }
                     
                 } 
         );
     </script>
 
+
+    <script type="text/javascript">
+        var delete_data;
+
+
+
+        $(document).ready(function() {
+            var table = $('#whitetable').DataTable();
+
+
+            $('#whitetable tbody').on( 'click', 'tr', function () {
+              if ( $(this).hasClass('selected') ) {
+                  $(this).removeClass('selected');
+              }
+              else {
+                  table.$('tr.selected').removeClass('selected');
+                  $(this).addClass('selected');
+                  delete_data = (table.row(this).data());
+              }
+              } );
+
+            
+            $('#dip').click( function () {
+              table.row('.selected').remove().draw( false );
+            } );
+
+
+        } );
+
+        function checkpwd() {
+          document.getElementById("dip").value = delete_data;
+          }
+    </script>
 
     
   </body>

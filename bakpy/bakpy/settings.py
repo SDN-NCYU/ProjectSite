@@ -13,6 +13,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 from django.contrib.messages import constants as message_constants
 import mimetypes
+
+filepath = os.path.abspath("/security.txt")
+fs = open(filepath,'r')
+DB_PASS = fs.read().splitlines()
+fs.close
+
+
 mimetypes.add_type("text/css", ".css", True)
 MESSAGE_LEVEL = message_constants.DEBUG
 
@@ -29,12 +36,13 @@ SECRET_KEY = '1x+65l5u4g@s+rdrxr8*i93wpo0!nf6#0pumx75%#psfm_lqj$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["120.113.173.84"]
+ALLOWED_HOSTS = ["120.113.173.84","cs084.csie.ncyu.edu.tw"]
 
 # MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 # Application definition
 
 INSTALLED_APPS = [
+    'sslserver',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'ProjectSDN',
         'USER':'root',
-        'PASSWORD':'ji3ul42; vul3j;6',
+        'PASSWORD':DB_PASS[0],
         'HOST':'120.113.173.84',
         'PORT':'3306',
     }

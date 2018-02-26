@@ -164,3 +164,12 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+
+
+class Sysstatus(models.Model):
+    time = models.CharField(primary_key=True, max_length=128)
+    status = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'sysStatus'

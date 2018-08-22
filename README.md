@@ -1,4 +1,4 @@
-# This is "workspaceryu/Project"'s Website
+# This is "ryu_DDoS_shelter/Project"'s Website
 
 - html file is in: bakpy/excuse/templates
 - css,js    is in: bakpy/excuse/static
